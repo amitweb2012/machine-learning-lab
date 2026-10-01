@@ -1,49 +1,147 @@
 # 🧠 Machine Learning Lab
 
-> **A portfolio-grade Machine Learning repository covering the complete journey from data analysis and statistics to model development, evaluation, MLOps, and deployment.**
+<div align="center">
+
+<img src="assets/logo/ml-lab-logo.svg" alt="Machine Learning Lab" width="760"/>
+
+### A structured, practical path from **Python & Statistics → EDA → Preprocessing → Machine Learning → Evaluation → MLOps → Deployment**
+
+<p><a href="#-learning-path">Learning Path</a> • <a href="#-portfolio-projects">Projects</a> • <a href="#-repository-structure">Structure</a> • <a href="#-getting-started">Getting Started</a> • <a href="#-documentation">Docs</a></p>
 
 [![Python](https://img.shields.io/badge/Python-3.11%2B-3776AB?logo=python&logoColor=white)](https://www.python.org/)
-[![scikit-learn](https://img.shields.io/badge/scikit--learn-ML-F7931E?logo=scikitlearn&logoColor=white)](https://scikit-learn.org/)
+[![NumPy](https://img.shields.io/badge/NumPy-2.x-013243?logo=numpy&logoColor=white)](https://numpy.org/)
+[![Pandas](https://img.shields.io/badge/Pandas-2.x-150458?logo=pandas&logoColor=white)](https://pandas.pydata.org/)
+[![scikit--learn](https://img.shields.io/badge/scikit--learn-ML-F7931E?logo=scikit-learn&logoColor=white)](https://scikit-learn.org/)
 [![Jupyter](https://img.shields.io/badge/Jupyter-Notebooks-F37626?logo=jupyter&logoColor=white)](https://jupyter.org/)
-[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![CI](https://github.com/amitweb2012/machine-learning-lab/actions/workflows/ci.yml/badge.svg)](https://github.com/amitweb2012/machine-learning-lab/actions/workflows/ci.yml)
+[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+
+</div>
 
 ---
 
-## 🎯 About This Repository
+## 🎯 What this repository is
 
-**Machine Learning Lab** is a structured learning and portfolio repository designed to demonstrate practical Machine Learning engineering skills.
+**Machine Learning Lab** is a portfolio-focused learning repository built as a progression rather than a collection of disconnected examples.
 
-It connects:
+> **Understand the mathematics → inspect the data → prepare the data → build models → evaluate evidence → turn experiments into reusable ML systems.**
 
-**Mathematics & Statistics → Data Analysis → Feature Engineering → Machine Learning → Evaluation → MLOps → Deployment**
-
-The repository is intentionally organized so that every topic can evolve from a learning example into a production-style implementation.
+| Stage | Question | Repository area |
+|---|---|---|
+| 🐍 01 | Can I work confidently with Python and data tools? | [Python Foundation](01-python-foundation/) |
+| 📐 02 | Can I reason about data mathematically? | [Statistics](02-statistics/) |
+| 📊 03 | Can I discover patterns and data-quality issues? | [Data Analysis & EDA](03-data-analysis/) |
+| 🧹 04 | Can I transform raw data reproducibly? | [Data Preprocessing](04-data-preprocessing/) |
+| 🤖 05 | Can I build predictive models? | [Supervised Learning](05-supervised-learning/) |
+| 🔎 06 | Can I discover structure without labels? | [Unsupervised Learning](06-unsupervised-learning/) |
+| 🌲 07 | Can I combine weak learners into stronger models? | [Ensemble Learning](07-ensemble-learning/) |
+| 📈 08 | Can I measure model performance correctly? | [Model Evaluation](08-model-evaluation/) |
+| 🧪 09 | Can I apply the full workflow to projects? | [ML Projects](09-ml-projects/) |
+| 🧩 10 | Can I make training reproducible? | [ML Pipelines](10-ml-pipelines/) |
+| 🚀 11 | Can I package and serve a model? | [Deployment](11-deployment/) |
 
 ---
 
-## 🗺️ Learning & Project Roadmap
+## 🗺️ Learning Path
 
-| Area | What you will find |
+```text
+Python
+  │
+  ▼
+Statistics & Probability
+  │
+  ▼
+Data Analysis / EDA
+  │
+  ▼
+Data Preprocessing
+  │
+  ├───────────────┐
+  ▼               ▼
+Supervised     Unsupervised
+Learning        Learning
+  │               │
+  └───────┬───────┘
+          ▼
+   Ensemble Learning
+          │
+          ▼
+    Model Evaluation
+          │
+          ▼
+    Portfolio Projects
+          │
+          ▼
+     ML Pipelines
+          │
+          ▼
+       Deployment
+```
+
+---
+
+## 🧪 Portfolio Projects
+
+| Project | Type | Focus | Status |
+|---|---|---|---|
+| [Insurance Cost Prediction](09-ml-projects/insurance-cost-prediction/) | Regression | EDA, preprocessing, regression, evaluation | 🚧 Building |
+| [House Price Prediction](09-ml-projects/house-price-prediction/) | Regression | Feature engineering, preprocessing, model comparison | 🚧 Planned |
+| [Customer Churn](09-ml-projects/customer-churn/) | Classification | Imbalance, precision/recall, ROC-AUC, explainability | 🚧 Planned |
+| [Fraud Detection](09-ml-projects/fraud-detection/) | Classification | Imbalance, leakage prevention, business error analysis | 🚧 Planned |
+
+> **Status note:** “Planned” and “Building” describe the repository scope and implementation stage; they do not mean every workflow listed in a project description is already implemented.
+
+---
+
+## 🔬 Core ML Workflow
+
+```text
+Business Problem
+      ↓
+Data Collection
+      ↓
+Data Understanding
+      ↓
+EDA & Data Quality
+      ↓
+Preprocessing
+      ↓
+Feature Engineering
+      ↓
+Train / Validate / Test
+      ↓
+Model Training
+      ↓
+Evaluation & Error Analysis
+      ↓
+Explainability
+      ↓
+Packaging / Pipeline
+      ↓
+Deployment & Monitoring
+```
+
+---
+
+## 🧰 Technology Stack
+
+| Area | Tools |
 |---|---|
-| 🐍 Python | NumPy, Pandas, functions, OOP, modules |
-| 📐 Statistics | Probability, distributions, variance, correlation |
-| 🧪 Statistical Testing | Z-test, t-test, chi-square, ANOVA, confidence intervals |
-| 📊 EDA | Data quality, distributions, relationships, outliers |
-| ⚙️ Preprocessing | Missing values, encoding, scaling, transformation |
-| 🧬 Feature Engineering | Selection, creation, dimensionality reduction |
-| 🤖 Supervised ML | Regression and classification algorithms |
-| 🔍 Unsupervised ML | Clustering, PCA, anomaly detection |
-| 🌳 Ensemble Learning | Random Forest, Gradient Boosting, XGBoost, LightGBM |
-| 📈 Evaluation | Cross-validation, metrics, calibration, error analysis |
-| 🔬 Explainability | Feature importance, SHAP, model interpretation |
-| 🧩 ML Pipelines | Reproducible preprocessing and training pipelines |
-| 🚀 MLOps | Experiment tracking, model versioning, CI |
-| 🐳 Deployment | FastAPI, Docker, cloud-ready services |
+| Language | Python |
+| Numerical Computing | NumPy |
+| Data Analysis | Pandas |
+| Visualization | Matplotlib, Seaborn |
+| Machine Learning | scikit-learn |
+| Gradient Boosting | XGBoost, LightGBM |
+| Notebooks | Jupyter |
+| Reproducibility | Joblib, pytest |
+| Automation | GitHub Actions |
+| Serving | FastAPI |
+| Packaging | Docker |
 
 ---
 
-## 📁 Repository Structure
+## 🧱 Repository Structure
 
 ```text
 machine-learning-lab/
@@ -56,156 +154,43 @@ machine-learning-lab/
 ├── 06-unsupervised-learning/
 ├── 07-ensemble-learning/
 ├── 08-model-evaluation/
+│
 ├── 09-ml-projects/
 │   ├── insurance-cost-prediction/
 │   ├── house-price-prediction/
 │   ├── customer-churn/
-│   └── fraud-detection/
+│   ├── fraud-detection/
+│   └── PROJECT_TEMPLATE.md
+│
 ├── 10-ml-pipelines/
 ├── 11-deployment/
 │
 ├── docs/
-│   ├── roadmap.md
-│   ├── algorithms.md
-│   ├── statistics-formulas.md
-│   └── interview-questions.md
-│
 ├── assets/
-│   ├── diagrams/
-│   └── logo/
-│
 ├── tests/
-├── .github/
-│   └── workflows/
-│       └── ci.yml
+├── .github/workflows/
 │
 ├── README.md
-├── CONTRIBUTING.md
-├── LICENSE
+├── requirements.txt
 ├── pyproject.toml
-└── requirements.txt
+├── CONTRIBUTING.md
+└── LICENSE
 ```
-
----
-
-## 🧠 Core Machine Learning Workflow
-
-```text
-                 ┌───────────────────┐
-                 │   Business Goal   │
-                 └─────────┬─────────┘
-                           ↓
-                 ┌───────────────────┐
-                 │   Collect Data    │
-                 └─────────┬─────────┘
-                           ↓
-                 ┌───────────────────┐
-                 │   EDA & Quality   │
-                 └─────────┬─────────┘
-                           ↓
-                 ┌───────────────────┐
-                 │ Preprocessing &   │
-                 │ Feature Engineering│
-                 └─────────┬─────────┘
-                           ↓
-                 ┌───────────────────┐
-                 │ Train / Validate  │
-                 └─────────┬─────────┘
-                           ↓
-                 ┌───────────────────┐
-                 │ Evaluate & Tune   │
-                 └─────────┬─────────┘
-                           ↓
-                 ┌───────────────────┐
-                 │ Explain & Package │
-                 └─────────┬─────────┘
-                           ↓
-                 ┌───────────────────┐
-                 │ Deploy & Monitor  │
-                 └───────────────────┘
-```
-
----
-
-## ⭐ Portfolio Projects
-
-### 1. Insurance Cost Prediction
-End-to-end regression project covering:
-- Data understanding and data quality
-- Exploratory Data Analysis
-- Feature relationships
-- Categorical encoding
-- Train/test split
-- Regression models
-- Metrics and residual analysis
-- Reproducible ML pipeline
-
-Path: [09-ml-projects/insurance-cost-prediction](09-ml-projects/insurance-cost-prediction/)
-
-### 2. House Price Prediction
-A regression workflow focused on:
-- Missing-value treatment
-- Feature engineering
-- Numerical/categorical preprocessing
-- Model comparison
-- Cross-validation
-
-### 3. Customer Churn Prediction
-A classification project focused on:
-- Class imbalance
-- Precision, recall and F1
-- ROC-AUC / PR-AUC
-- Threshold analysis
-- Explainability
-
-### 4. Fraud Detection
-A production-oriented classification problem focused on:
-- Imbalanced data
-- Leakage prevention
-- Model evaluation
-- Business-oriented error analysis
-
----
-
-## 🧰 Technology Stack
-
-**Languages**
-- Python
-
-**Data**
-- NumPy
-- Pandas
-- Matplotlib
-- Seaborn
-
-**Machine Learning**
-- scikit-learn
-- XGBoost
-- LightGBM
-
-**Experimentation / MLOps**
-- MLflow
-- Joblib
-- pytest
-- GitHub Actions
-
-**Deployment**
-- FastAPI
-- Docker
-- Cloud-ready architecture
 
 ---
 
 ## 🚀 Getting Started
 
-### Clone
+### 1. Clone
 
 ```bash
 git clone https://github.com/amitweb2012/machine-learning-lab.git
 cd machine-learning-lab
 ```
 
-### Create environment
+### 2. Create a virtual environment
+
+macOS / Linux:
 
 ```bash
 python -m venv .venv
@@ -215,24 +200,33 @@ source .venv/bin/activate
 Windows:
 
 ```powershell
+python -m venv .venv
 .venv\Scripts\activate
 ```
 
-### Install dependencies
+### 3. Install dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### Run tests
+### 4. Run tests
 
 ```bash
 pytest
 ```
 
+### 5. Recommended learning sequence
+
+```text
+02-statistics → 03-data-analysis → 04-data-preprocessing
+        ↓
+05-supervised-learning → 08-model-evaluation → 09-ml-projects
+```
+
 ---
 
-## 📚 Documentation
+## 📖 Documentation
 
 - [Machine Learning Roadmap](docs/roadmap.md)
 - [Algorithms Reference](docs/algorithms.md)
@@ -242,23 +236,39 @@ pytest
 
 ---
 
-## 💼 Portfolio Positioning
+## ✨ Repository Principles
 
-This repository is designed to demonstrate more than algorithm knowledge.
+**Learn the concept.** Major topics should have a clear explanation.
 
-It emphasizes:
+**Show the mathematics.** Important statistics and ML ideas should include formulas and intuition.
 
-**Problem Definition → Data Understanding → Statistical Reasoning → Feature Engineering → Modeling → Evaluation → Reproducibility → Deployment**
+**Write runnable code.** Examples should be executable and easy to inspect.
 
-That makes each project suitable for discussion in technical interviews and portfolio reviews.
+**Keep workflows reproducible.** Use consistent preprocessing, tests, and automation.
+
+**Separate learning from projects.** Numbered sections teach individual ideas; `09-ml-projects` combines them into portfolio-oriented applications.
+
+**Prefer evidence over assumptions.** EDA, statistical testing, and model evaluation should support conclusions with measurable results.
 
 ---
 
-## 🧑‍💻 Author
+## 💼 Portfolio Focus
 
-**Amit Das**
+This repository demonstrates the progression:
 
-GitHub: [@amitweb2012](https://github.com/amitweb2012)
+**Python → Mathematics → Data Understanding → Preprocessing → Modeling → Evaluation → Reproducibility → Deployment**
+
+The objective is not simply to collect algorithms, but to show how they fit into an end-to-end Machine Learning workflow.
+
+---
+
+<div align="center">
+
+### Built as a practical Machine Learning learning lab
+
+**Amit Das** · [GitHub](https://github.com/amitweb2012)
+
+</div>
 
 ---
 

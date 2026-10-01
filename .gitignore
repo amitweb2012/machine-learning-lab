@@ -1,0 +1,42 @@
+# Python
+__pycache__/
+*.py[cod]
+*.so
+.venv/
+venv/
+env/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Packaging
+build/
+dist/
+*.egg-info/
+
+# Data
+*.csv
+*.parquet
+*.feather
+*.db
+
+# Model artifacts
+*.pkl
+*.joblib
+*.onnx
+
+# Environment / secrets
+.env
+.env.*
+!.env.example
+
+# IDE
+.idea/
+.vscode/
+.DS_Store
+
+# Logs
+*.log
+
+# OS
+Thumbs.db

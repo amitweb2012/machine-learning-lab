@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="240" viewBox="0 0 900 240">
+<rect width="900" height="240" rx="32" fill="#0B1220"/>
+<g stroke="#38BDF8" stroke-width="6" fill="none">
+<path d="M95 120 L155 65 L215 120 L155 175 Z"/>
+<path d="M215 120 L275 65 L335 120 L275 175 Z"/>
+<path d="M275 65 L155 65"/>
+<path d="M275 175 L155 175"/>
+</g>
+<g fill="#F8FAFC">
+<circle cx="95" cy="120" r="11"/><circle cx="155" cy="65" r="11"/><circle cx="155" cy="175" r="11"/>
+<circle cx="215" cy="120" r="11"/><circle cx="275" cy="65" r="11"/><circle cx="275" cy="175" r="11"/><circle cx="335" cy="120" r="11"/>
+</g>
+<text x="380" y="105" font-family="Arial, Helvetica, sans-serif" font-size="58" font-weight="700" fill="#F8FAFC">Machine Learning</text>
+<text x="382" y="157" font-family="Arial, Helvetica, sans-serif" font-size="30" fill="#94A3B8">LAB • DATA • MODELS • MLOps</text>
+</svg>

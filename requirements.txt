@@ -3,6 +3,7 @@ pandas>=2.2
 matplotlib>=3.9
 seaborn>=0.13
 scikit-learn>=1.5
+scipy>=1.13
 xgboost>=2.1
 lightgbm>=4.5
 jupyter>=1.1

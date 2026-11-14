@@ -1,0 +1,11 @@
+student_id,name,gender,study_hours,attendance,math,science,english
+101,Rahul,Male,2,70,65,70,75
+102,Priya,Female,5,95,92,90,95
+103,Amit,Male,1,60,-40,58,103
+104,Sneha,Female,6,98,96,94,92
+105,Ravi,Male,2,65,60,62,120
+106,Neha,Female,5,90,88,87,90
+107,Arjun,Male,3,75,72,75,78
+108,Pooja,Female,7,99,95,98,96
+109,Karan,Male,4,80,78,80,82
+110,Riya,Female,6,94,91,93,94

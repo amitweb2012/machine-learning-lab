@@ -1,0 +1,11 @@
+student_id,name,gender,study_hours,attendance,math,science,english,average_marks,performance
+101,Rahul,Male,2,70,65,70,75,70.0,Average
+102,Priya,Female,5,95,92,90,95,92.33333333333333,Excellent
+103,Amit,Male,1,60,82,58,88,76.0,Average
+104,Sneha,Female,6,98,96,94,92,94.0,Excellent
+105,Ravi,Male,2,65,60,62,88,70.0,Average
+106,Neha,Female,5,90,88,87,90,88.33333333333333,Good
+107,Arjun,Male,3,75,72,75,78,75.0,Average
+108,Pooja,Female,7,99,95,98,96,96.33333333333333,Excellent
+109,Karan,Male,4,80,78,80,82,80.0,Good
+110,Riya,Female,6,94,91,93,94,92.66666666666667,Excellent

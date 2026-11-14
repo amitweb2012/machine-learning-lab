@@ -20,6 +20,10 @@ dist/
 *.feather
 *.db
 
+# Synthetic student EDA input and generated output
+!student-performance-eda/data/student_performance.csv
+!student-performance-eda/data/processed/student_performance_eda_cleaned.csv
+
 # Model artifacts
 *.pkl
 *.joblib

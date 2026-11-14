@@ -1,6 +1,6 @@
 # 🧹 Data Preprocessing for Machine Learning
 
-This section turns the EDA findings from `03-data-analysis` into a reproducible preprocessing workflow.
+This section builds on the concepts from `03-data-analysis` with reproducible preprocessing examples.
 
 The existing insurance project is preserved **without changing its code**. The preprocessing examples are separate learning programs that use the same ideas and can be applied to the insurance dataset.
 
@@ -8,7 +8,7 @@ The existing insurance project is preserved **without changing its code**. The p
 
 ```text
 Raw Insurance Data → Missing Values → Duplicates → Outliers
-→ Encoding → Scaling → Feature Engineering → Train/Test Split
+→ Encoding → Scaling → Normalization → Feature Engineering → Train/Test Split
 → Pipeline → Machine Learning
 ```
 
@@ -32,8 +32,11 @@ The existing insurance EDA project remains unchanged. These programs demonstrate
 
 ## Run
 
+Run these commands from the `machine-learning-lab` directory:
+
 ```bash
-pip install -r requirements.txt
+source ../.venv/bin/activate
+python -m pip install -r requirements.txt
 python 04-data-preprocessing/01_missing_values.py
 python 04-data-preprocessing/02_duplicates.py
 python 04-data-preprocessing/03_outlier_treatment.py

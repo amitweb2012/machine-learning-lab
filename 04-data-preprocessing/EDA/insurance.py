@@ -21,6 +21,7 @@ Model training and model evaluation are NOT included yet.
 """
 
 import warnings
+from pathlib import Path
 
 import matplotlib.pyplot as plt
 import numpy as np
@@ -34,7 +35,7 @@ warnings.filterwarnings("ignore")
 # 1. LOAD DATASET
 # ---------------------------------------------------------------------------
 
-DATA_FILE = "insurance.csv"
+DATA_FILE = Path(__file__).resolve().parent / "insurance.csv"
 
 df = pd.read_csv(DATA_FILE)
 
@@ -340,6 +341,8 @@ plt.xlabel("BMI Category")
 plt.ylabel("Charges")
 plt.tight_layout()
 plt.show()
+print("\n--- First 5 rows of the cleaned dataset ---")
+print(df_cleaned.head() )
 
 
 # ---------------------------------------------------------------------------

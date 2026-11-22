@@ -6,6 +6,7 @@ from pathlib import Path
 import warnings
 warnings.filterwarnings("ignore")
 
+
 path = Path(__file__).parent / "data" / "student_performance.csv"
 df = pd.read_csv(path)
 numeric_cols = df.select_dtypes(include=[np.number]).columns

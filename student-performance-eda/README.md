@@ -70,17 +70,20 @@ The script opens charts in plot windows. Close each window to continue.
 ```mermaid
 flowchart TD
     A["CSV input<br/>data/student_performance.csv"] --> B["Load with pandas"]
-    B --> C["Preview rows, dtypes and summary statistics"]
-    C --> D["Identify missing values and duplicates"]
-    D --> E["Fill numeric missing values with column means"]
-    E --> F["Drop duplicate rows and remaining missing rows"]
+    B --> C["Validate required columns"]
+    C --> D["Preview rows, dtypes and summary statistics"]
+    D --> E["Identify missing values and duplicates"]
+    E --> F["Drop duplicate rows"]
     F --> G["Validate study_hours, attendance and subject ranges"]
     G --> H["Replace invalid values using valid-value means"]
-    H --> I["Calculate five-number summaries and IQR bounds"]
-    I --> J["Create histograms, box plots and gender count plot"]
-    J --> K["Calculate average_marks and performance bands"]
-    K --> L["Run bivariate and multivariate analysis"]
-    L --> M["Print findings and save cleaned CSV"]
+    H --> I["Fill remaining numeric missing values with column means"]
+    I --> J["Drop rows that still contain missing values"]
+    J --> K["Calculate five-number summaries, skewness and kurtosis"]
+    K --> L["Calculate IQR bounds and outliers"]
+    L --> M["Create histograms, box plots and gender count plot"]
+    M --> N["Calculate average_marks and performance bands"]
+    N --> O["Run bivariate and multivariate analysis"]
+    O --> P["Print findings and save cleaned CSV"]
 ```
 
 ### Step-by-step code and mathematics
@@ -101,6 +104,8 @@ The script prints:
 - Missing-value counts.
 - Missing-value percentages.
 - Duplicate-row counts.
+- Duplicate-row percentage.
+- Dataset row and column counts.
 - Unique values per column.
 
 For a column containing $n$ observations, the missing-value percentage is:
@@ -112,9 +117,17 @@ $$
 
 The duplicate count is the number of rows for which `df.duplicated()` is `True` (only rows duplicated after their first occurrence are counted).
 
+The duplicate percentage is:
+
+$$
+\text{Duplicate\%}
+=\frac{\text{number of duplicate rows}}{\text{total number of rows}}
+\times100
+$$
+
 #### 3. Handle missing values
 
-Missing values in each numeric feature are filled with that feature's mean:
+After invalid range values are replaced, missing values in each remaining numeric feature are filled with that feature's mean:
 
 $$
 \bar{x}_j=\frac{1}{n_j}\sum_{i=1}^{n_j}x_{ij}
@@ -122,10 +135,12 @@ $$
 
 where $n_j$ is the number of non-missing observations in column $j$. Pandas computes this mean using the valid values and then replaces missing entries in the same column.
 
-The script then removes duplicates and any remaining rows containing missing values:
+The script first removes duplicate rows. It then removes only rows that still contain missing values after numeric mean imputation:
 
 ```python
-df_cleaned = df.drop_duplicates().dropna()
+df_cleaned = df.drop_duplicates()
+# Range cleaning and numeric mean imputation occur here
+df_cleaned = df_cleaned.dropna()
 ```
 
 #### 4. Validate allowed ranges
@@ -170,6 +185,28 @@ For every numeric feature except `student_id`, the script calculates:
 4. Third quartile, $Q3$
 5. Maximum
 
+The script also calculates skewness and excess kurtosis using pandas.
+
+For a sample with mean $\bar{x}$ and sample standard deviation $s$, skewness describes the asymmetry of the distribution:
+
+$$
+\text{Skewness}=
+\frac{n}{(n-1)(n-2)}
+\sum_{i=1}^{n}
+\left(\frac{x_i-\bar{x}}{s}\right)^3
+$$
+
+Pandas reports excess kurtosis, for which a normal distribution has a value close to 0:
+
+$$
+\text{Excess Kurtosis}
+=
+\frac{n(n+1)}{(n-1)(n-2)(n-3)}
+\sum_{i=1}^{n}
+\left(\frac{x_i-\bar{x}}{s}\right)^4
+-\frac{3(n-1)^2}{(n-2)(n-3)}
+$$
+
 The interquartile range is:
 
 $$
@@ -199,6 +236,14 @@ For the current 10-row dataset, no study-habit or subject-mark outliers are dete
 - Histograms show the distribution of `study_hours`, `attendance`, `math`, `science`, and `english`.
 - Box plots show medians and quartiles and provide a visual check for outliers.
 - `countplot` shows the number of male and female students.
+- Gender counts and percentages are also printed.
+
+For any category $c$, the percentage is:
+
+$$
+\text{Category\%}_c=
+\frac{\text{Count}(c)}{n}\times100
+$$
 
 #### 7. Calculate average marks and performance bands
 
@@ -406,11 +451,14 @@ Running the script against the included 10-row dataset produced:
 | Result | Value |
 | --- | --- |
 | Cleaned students | 10 |
+| Duplicate rows | 0 |
+| Gender distribution | 5 Male, 5 Female |
 | Overall average marks | 83.5 |
 | Highest average | Pooja, 96.3 |
 | Lowest average | Rahul, 70.0 |
 | Female average marks | 92.7 |
 | Male average marks | 74.2 |
+| Performance distribution | 0 Needs Improvement, 4 Average, 2 Good, 4 Excellent |
 | Study hours correlation with average marks | 0.94 |
 | Attendance correlation with average marks | 0.94 |
 | IQR outliers after cleaning | 0 for all measured features |

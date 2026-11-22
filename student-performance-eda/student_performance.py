@@ -3,12 +3,29 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 from pathlib import Path
-import warnings
-warnings.filterwarnings("ignore")
 
 
 path = Path(__file__).parent / "data" / "student_performance.csv"
 df = pd.read_csv(path)
+
+required_columns = {
+    "student_id",
+    "name",
+    "gender",
+    "study_hours",
+    "attendance",
+    "math",
+    "science",
+    "english",
+}
+missing_columns = required_columns - set(df.columns)
+if missing_columns:
+    raise ValueError(
+        f"Missing required columns: {', '.join(sorted(missing_columns))}"
+    )
+
+print(f"\n--- Dataset Shape ---")
+print(f"Rows: {df.shape[0]}, Columns: {df.shape[1]}")
 numeric_cols = df.select_dtypes(include=[np.number]).columns
 numeric_features = [col for col in numeric_cols if col != "student_id"]
 print("--- First 5 rows of the dataset ---")
@@ -25,14 +42,15 @@ missing_percentage = (
 )
 print("\n--- Missing Values Percentage ---")
 print(missing_percentage)
-# fill missing values with mean for numeric columns
-for col in numeric_features:
-    df[col] = df[col].fillna(df[col].mean())
 
 print("\n--- Duplicate Values ---")
-print(df.duplicated().sum())
-# remove duplicates and rows with missing values
-df_cleaned = df.drop_duplicates().dropna()
+duplicate_count = df.duplicated().sum()
+print(duplicate_count)
+print(
+    "--- Duplicate Percentage ---\n"
+    f"{(duplicate_count / len(df) * 100):.2f}%"
+)
+df_cleaned = df.drop_duplicates()
 print("\n--- Unique Values ---")
 for col in df_cleaned.columns:
     print(f"{col}: {df_cleaned[col].nunique()}")
@@ -68,6 +86,18 @@ for col, (minimum, maximum) in value_ranges.items():
             df_cleaned[col] = df_cleaned[col].astype(float)
         df_cleaned.loc[invalid_mask, col] = replacement_value
 
+# Fill missing numeric values only after invalid domain values are cleaned.
+numeric_features_cleaned = [
+    col
+    for col in df_cleaned.select_dtypes(include=[np.number]).columns
+    if col != "student_id"
+]
+for col in numeric_features_cleaned:
+    df_cleaned[col] = df_cleaned[col].fillna(df_cleaned[col].mean())
+
+# Remove only rows that still contain missing values after imputation.
+df_cleaned = df_cleaned.dropna()
+
 print("\n--- First 5 rows of the cleaned dataset ---")
 print(df_cleaned.head(20))
 
@@ -93,6 +123,8 @@ for col in numeric_features:
     # total number of outliers
     outliers = df_cleaned[(df_cleaned[col] < lower_bound) | (df_cleaned[col] > upper_bound)]
     print("Total Outliers:", outliers.shape[0])
+    print("Skewness:", round(df_cleaned[col].skew(), 3))
+    print("Kurtosis:", round(df_cleaned[col].kurt(), 3))
     
 features = ["study_hours", "attendance", "math", "science", "english"]
 df_cleaned[features].hist(figsize=(12, 8), bins=10)
@@ -106,6 +138,9 @@ plt.tight_layout()
 plt.show()
 
 sns.countplot(data=df_cleaned, x="gender")
+print("\n--- Gender Distribution ---")
+print(df_cleaned["gender"].value_counts())
+print((df_cleaned["gender"].value_counts(normalize=True) * 100).round(1))
 plt.show()
 
 # Bivariate analysis: study habits and gender versus average marks
@@ -121,6 +156,11 @@ df_cleaned["performance"] = pd.cut(
 
 print("\n--- Performance Category Counts ---")
 print(df_cleaned["performance"].value_counts(sort=False))
+print("\n--- Performance Category Percentages ---")
+print(
+    (df_cleaned["performance"].value_counts(normalize=True, sort=False) * 100)
+    .round(1)
+)
 
 relationship_columns = ["study_hours", "attendance", "average_marks"]
 print("\n--- Correlation with average marks ---")
